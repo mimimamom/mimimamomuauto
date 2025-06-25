@@ -1,18 +1,24 @@
-/* Общие стили и сброс */
+/* ================================== */
+/* ОБЩИЕ СТИЛИ И ПЕРЕМЕННЫЕ           */
+/* ================================== */
+
+/* Общий сброс стилей для консистентного вида в разных браузерах */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Переменные для удобного управления цветами и стилями */
 :root {
-    --bg-color: #fdfafb; /* Очень нежный, почти белый фон */
-    --text-color: #3d3d3d; /* Темно-серый текст */
-    --primary-color: #e8b4b8; /* Припыленный розовый акцент */
-    --card-bg-color: #ffffff;
-    --shadow-color: rgba(0, 0, 0, 0.08);
+    --bg-color: #fdfafb; /* Очень нежный, почти белый фон с розовым оттенком */
+    --text-color: #3d3d3d; /* Темно-серый текст для лучшей читаемости */
+    --primary-color: #e8b4b8; /* Припыленный розовый акцентный цвет */
+    --card-bg-color: #ffffff; /* Белый фон для карточек */
+    --shadow-color: rgba(0, 0, 0, 0.07); /* Легкая, ненавязчивая тень */
 }
 
+/* Плавная прокрутка по якорям */
 html {
     scroll-behavior: smooth;
 }
@@ -21,9 +27,13 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     font-family: 'Montserrat', sans-serif;
-    line-height: 1.7;
-    cursor: none;
+    line-height: 1.7; /* Увеличенный межстрочный интервал для комфортного чтения */
+    cursor: none; /* Скрываем стандартный курсор */
 }
+
+/* ================================== */
+/* УТИЛИТЫ И АНИМАЦИИ                 */
+/* ================================== */
 
 /* Стили для интерактивного курсора */
 .cursor-glow {
@@ -35,13 +45,28 @@ body {
     border-radius: 50%;
     left: 0;
     top: 0;
-    pointer-events: none;
+    pointer-events: none; /* Курсор не должен мешать кликам по элементам */
     transform: translate(-50%, -50%);
     transition: width 0.2s, height 0.2s, opacity 0.2s;
     z-index: 9999;
 }
 
-/* Секции */
+/* Анимация появления элементов при прокрутке */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ================================== */
+/* ОБЩИЕ СТИЛИ СЕКЦИЙ И ЗАГОЛОВКОВ    */
+/* ================================== */
+
 .full-screen {
     min-height: 100vh;
     display: flex;
@@ -59,33 +84,21 @@ body {
     text-align: center;
 }
 
-h1, h2 {
+h1, h2, h3 {
     color: var(--text-color);
-    margin-bottom: 20px;
-}
-
-h1 {
-    font-size: 3rem;
     font-weight: 700;
 }
+h1 { font-size: 3rem; margin-bottom: 20px; }
+h2 { font-size: 2.5rem; margin-bottom: 40px; }
+h3 { font-size: 1.8rem; margin-bottom: 15px; }
+p { margin-bottom: 15px; }
+.subtitle { font-size: 1.2rem; color: #777; }
 
-h2 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-}
+/* ================================== */
+/* СТИЛИ ДЛЯ КОНКРЕТНЫХ СЕКЦИЙ        */
+/* ================================== */
 
-h3 {
-    margin-bottom: 15px;
-    color: var(--text-color);
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: #777;
-}
-
-/* Главный экран */
+/* Секция 1: Приветствие (Hero) */
 .profile-photo-hero {
     width: 180px;
     height: 180px;
@@ -95,21 +108,18 @@ h3 {
     margin-bottom: 30px;
     box-shadow: 0 4px 15px var(--shadow-color);
 }
-
-.typewriter {
-    color: var(--primary-color);
-}
+.typewriter { color: var(--primary-color); }
 .typewriter::after {
     content: '|';
     color: var(--primary-color);
     animation: blink 0.7s infinite;
 }
+@keyframes blink { 50% { opacity: 0; } }
 
-@keyframes blink {
-    50% { opacity: 0; }
-}
+/* Секция 2: Обо мне */
+.about-content p { max-width: 700px; margin-left: auto; margin-right: auto; }
 
-/* Секция "Навыки" */
+/* Секция 3: Навыки */
 .skills-grid {
     display: flex;
     flex-wrap: wrap;
@@ -128,46 +138,95 @@ h3 {
     background-color: var(--primary-color);
     color: white;
     border-color: var(--primary-color);
+    transform: translateY(-3px);
 }
 
-
-/* Секция "Проект" */
+/* Секция 4: Проект (ФИНАЛЬНЫЙ ВЕРТИКАЛЬНЫЙ МАКЕТ) */
 .project-card-large {
     background-color: var(--card-bg-color);
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 5px 25px var(--shadow-color);
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
+    overflow: hidden; /* Это важно, чтобы скруглить углы у картинки */
     text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card-large:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.project-image-container {
+    /* Этот блок теперь просто контейнер */
+}
+
+.project-screenshot {
+    width: 100%; /* Картинка занимает всю ширину карточки */
+    height: auto; /* Высота подстраивается автоматически, чтобы не урезать */
+    display: block; /* Убирает лишние отступы под картинкой */
+}
+
+.project-details {
+    padding: 40px; /* Отступы для текста со всех сторон */
+}
+
+.project-category {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.project-details p {
+    color: #555;
+    line-height: 1.7;
+}
+
+.tech-stack-title {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .tech-stack {
-    margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    margin-bottom: 30px;
 }
+
 .tech-stack span {
-    background-color: #f0f0f0;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.9rem;
+    background-color: #f1f1f1;
+    color: #555;
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid #e0e0e0;
 }
-.project-card-large a {
+
+.project-details a {
     display: inline-block;
-    margin-top: 25px;
     background-color: var(--primary-color);
     color: white;
     padding: 12px 25px;
     text-decoration: none;
     font-weight: bold;
-    border-radius: 5px;
-    transition: transform 0.3s;
-}
-.project-card-large a:hover {
-    transform: scale(1.05);
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-/* Контакты */
+.project-details a:hover {
+    background-color: #d19ca1;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(232, 180, 184, 0.5);
+}
+
+/* Секция 5: Контакты */
 .contact-links a {
     color: var(--text-color);
     text-decoration: none;
@@ -176,29 +235,22 @@ h3 {
     font-weight: bold;
     transition: color 0.3s;
 }
-.contact-links a:hover {
-    color: var(--primary-color);
-}
+.contact-links a:hover { color: var(--primary-color); }
 
-/* Анимация */
-.hidden {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.8s, transform 0.8s;
-}
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
+/* Футер */
 footer {
     text-align: center;
     padding: 30px;
     color: #aaa;
 }
 
+/* ================================== */
+/* АДАПТИВНОСТЬ ДЛЯ МОБИЛЬНЫХ         */
+/* ================================== */
+
 @media (max-width: 768px) {
     h1 { font-size: 2.2rem; }
     h2 { font-size: 2rem; }
-    .project-card-large { padding: 25px; }
+    .content-section { padding: 80px 20px; }
+    .project-details { padding: 30px 25px; }
 }

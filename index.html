@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Интерактивный курсор -->
     <div class="cursor-glow"></div>
 
     <main>
@@ -25,7 +26,7 @@
             <h2>Немного обо мне</h2>
             <div class="about-content">
                 <p>Привет! Меня зовут Ксения. Я студентка третьего курса, и мой путь в программирование начался с любви к математике и хороших баллов. Меня увлекает процесс превращения сложных задач в элегантные и работающие приложения.</p>
-                <p>Я постоянно изучаю новые технологии и не боюсь сложных вызовов. Хотя... пауков всё-таки боюсь. В свободное время люблю гулять с друзьями и заниматься танцами. .</p>
+                <p>Я постоянно изучаю новые технологии и не боюсь сложных вызовов. Хотя... пауков всё-таки боюсь. В свободное время люблю гулять с друзьями и ходить на танцы.</p>
             </div>
         </section>
         
@@ -33,6 +34,8 @@
         <section id="skills" class="content-section hidden">
             <h2>Технологии, с которыми я работаю</h2>
             <div class="skills-grid">
+                <div class="skill-item">React</div>
+                <div class="skill-item">Vite</div>
                 <div class="skill-item">C#</div>
                 <div class="skill-item">JavaScript</div>
                 <div class="skill-item">TypeScript</div>
@@ -45,19 +48,37 @@
 
         <!-- Секция 4: Мой проект -->
         <section id="projects" class="content-section hidden">
-            <h2>Ключевой проект: Веб-приложение "МедМонитор"</h2>
+            <h2>Ключевой проект</h2>
+            
             <div class="project-card-large">
-                <h3>Система мониторинга здоровья для врачей и пациентов</h3>
-                <p>Это мой курсовой проект — полноценное веб-приложение, где пациенты могут записываться на прием и управлять своим профилем, а врачи — вести записи и следить за состоянием пациентов. Также реализован чат поддержки.</p>
-                <p><strong>Чем я горжусь:</strong> Мне удалось создать работающую систему с нуля, продумав логику как для фронтенда (на TypeScript/JS), так и для бэкенда. Например, я написала API-контроллер на C#, который управляет выдачей медицинских рекомендаций.</p>
-                <div class="tech-stack">
-                    <span>TypeScript</span>
-                    <span>JavaScript</span>
-                    <span>C#</span>
-                    <span>HTML</span>
-                    <span>CSS</span>
+                <!-- Контейнер с картинкой (теперь будет сверху) -->
+                <div class="project-image-container">
+                    <img src="images/скрин.png" alt="Скриншот проекта МедМонитор" class="project-screenshot">
                 </div>
-                <a href="https://github.com/mimimamom/careflow-monitor.git" target="_blank">Смотреть код на GitHub</a>
+
+                <!-- Контейнер с описанием (теперь будет снизу) -->
+                <div class="project-details">
+                    <span class="project-category">Веб-приложение | Курсовая работа</span>
+                    <h3>Система мониторинга "МедМонитор"</h3>
+                    <p>
+                        Полноценное приложение для взаимодействия врачей и пациентов. Фронтенд написан на <strong>React (с Vite)</strong> и TypeScript, а бэкенд-логика реализована на <strong>C#</strong>.
+                    </p>
+                    <p>
+                        Пациенты могут управлять профилем и записываться на прием, а врачи — вести историю болезни и следить за показателями.
+                    </p>
+                    
+                    <p class="tech-stack-title">Технологии:</p>
+                    <div class="tech-stack">
+                        <span>React</span>
+                        <span>Vite</span>
+                        <span>TypeScript</span>
+                        <span>C#</span>
+                        <span>CSS3</span>
+                        <span>HTML5</span>
+                    </div>
+                    
+                    <a href="https://github.com/mimimamom/careflow-monitor.git" target="_blank">Смотреть код на GitHub</a>
+                </div>
             </div>
         </section>
 
@@ -77,6 +98,7 @@
         <p>© 2024 Ксения Новикова. Сделано с ❤️</p>
     </footer>
 
+    <!-- Подключаем наш JavaScript файл -->
     <script src="script.js"></script>
 </body>
 </html>
